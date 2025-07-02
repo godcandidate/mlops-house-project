@@ -43,48 +43,6 @@ def run_preprocessing_step(
     return run_feature_engineering(input_file, output_file, preprocessor_file)
 
 # EXPERIMENTATION STEPS
-# @step
-# def load_data_exp_step(data_path: str) -> Tuple[
-#     Annotated[pd.DataFrame, "X_train"],
-#     Annotated[pd.DataFrame, "X_test"],
-#     Annotated[pd.Series, "y_train"],
-#     Annotated[pd.Series, "y_test"]
-# ]:
-#     """Step to load and split dataset."""
-#     X_train, X_test, y_train, y_test = load_data_exp(data_path)
-#     return X_train, X_test, y_train, y_test
-
-# @step
-# def select_features_step(X_train: pd.DataFrame, y_train: pd.Series) -> pd.Index:
-#     """Select top features using RFE."""
-#     selected_features, _ = select_features_with_rfe(X_train, y_train)
-#     return selected_features
-
-# @step
-# def train_models_step(
-#     X_train: pd.DataFrame,
-#     y_train: pd.Series,
-#     X_test: pd.DataFrame,
-#     y_test: pd.Series
-# ) -> Dict[str, Any]:
-#     """Train and evaluate multiple models."""
-#     return train_and_evaluate_models(X_train, y_train, X_test, y_test)
-
-# @step
-# def find_best_model_step(results: dict) -> Tuple[str, dict]:
-#     """Find the best model based on R² score."""
-#     return find_best_model(results)
-
-# @step
-# def save_model_config_step(
-#     best_name: str,
-#     best_result: dict,
-#     selected_features: pd.Index,
-#     config_path: str
-# ):
-#     """Save the best model config to disk."""
-#     save_model_config(best_name, best_result, selected_features, config_path)
-
 # Step 1: Load Data + Select Features
 @step
 def load_and_select_step(data_path: str) -> Tuple[
