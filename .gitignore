@@ -40,3 +40,10 @@ dist/
 # Ignore all .pkl files (models, preprocessors, etc.)
 *.pkl
 
+# Ignore ZenML config
+.zen
+*__init__*
+
+# MLflow
+*mlruns/
+*mlflow-data/
