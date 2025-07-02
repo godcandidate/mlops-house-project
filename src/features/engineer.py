@@ -67,7 +67,70 @@ def create_preprocessor():
             ('cat', categorical_transformer, categorical_features)
         ]
     )
+
+    X = df_featured.drop(columns=['price'], errors='ignore')  # Features only
+    y = df_featured['price'] if 'price' in df_featured.columns else None  # Target column (if available)
+    X_transformed = preprocessor.fit_transform(X)
+    logger.info("Fitted the preprocessor and transformed the features")
     
+    # Save the preprocessor
+    joblib.dump(preprocessor, preprocessor_file)
+    logger.info(f"Saved preprocessor to {preprocessor_file}")
+    
+    return preprocessor
+
+def create_and_save_preprocessor(df: pd.DataFrame, preprocessor_path: str):
+    """
+    Create, fit, and save a preprocessor using feature groups defined internally.
+    
+    Args:
+        df (pd.DataFrame): Input DataFrame used to fit the preprocessor
+        preprocessor_path (str): Path to save the preprocessor .joblib file
+
+    Returns:
+        ColumnTransformer: Fitted preprocessor object
+    """
+    logger.info("Creating and saving preprocessor")
+
+    # Define feature groups
+    categorical_features = ['location', 'condition']
+    numerical_features = ['sqft', 'bedrooms', 'bathrooms', 'house_age', 'price_per_sqft', 'bed_bath_ratio']
+
+    # Handle missing features gracefully
+    available_numerical = [col for col in numerical_features if col in df.columns]
+    available_categorical = [col for col in categorical_features if col in df.columns]
+
+    logger.info(f"Available numerical features: {available_numerical}")
+    logger.info(f"Available categorical features: {available_categorical}")
+
+    # Preprocessing for numerical features
+    numerical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='mean'))
+    ])
+
+    # Preprocessing for categorical features
+    categorical_transformer = Pipeline(steps=[
+        ('onehot', OneHotEncoder(handle_unknown='ignore'))
+    ])
+
+    # Combine preprocessors in a column transformer
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numerical_transformer, available_numerical),
+            ('cat', categorical_transformer, available_categorical)
+        ],
+        remainder='drop',
+        verbose_feature_names_out=False
+    )
+
+    # Fit the preprocessor
+    X = df[available_numerical + available_categorical]
+    preprocessor.fit(X)
+
+    # Save the preprocessor
+    joblib.dump(preprocessor, preprocessor_path)
+    logger.info(f"Saved preprocessor to {preprocessor_path}")
+
     return preprocessor
 
 def run_feature_engineering(input_file, output_file, preprocessor_file):
