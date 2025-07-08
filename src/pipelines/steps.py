@@ -9,19 +9,61 @@ from models.train_model import load_config, train_model, evaluate_model, log_to_
 from experimentation.experiment import load_data_exp, select_features_with_rfe, train_and_evaluate_models, find_best_model, save_model_config
 from typing import Tuple
 from typing import Annotated
+from zenml.integrations.s3.artifact_stores import S3ArtifactStore
+from zenml.client import Client
+from botocore.errorfactory import ClientError
+from zenml.materializers.materializer_registry import materializer_registry
+import pandas as pd
+from .materializers.parquet_materializer import ParquetDataFrameMaterializer
+
+# Register globally
+materializer_registry.register_and_overwrite_type(
+    key=pd.DataFrame,
+    type_=ParquetDataFrameMaterializer
+)
+
 
 # DATA PROCESSING STEPS
-@step
-def load_data_step(input_path: str) -> pd.DataFrame:
-    return load_data(input_path)
 
+# def load_data_step(input_path: str) -> pd.DataFrame:
+#     return load_data(input_path)
+
+@step
+def load_data_step(data_path: str) -> pd.DataFrame:
+    """Load data from S3 using the artifact store's authenticated filesystem."""
+    artifact_store = Client().active_stack.artifact_store
+
+    if not isinstance(artifact_store, S3ArtifactStore):
+        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+
+    input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+    fs = artifact_store.filesystem  # already authenticated via service connector
+
+    with fs.open(input_path, mode="rb") as f:
+        return pd.read_csv(f)
+        
 @step
 def clean_data_step(df: pd.DataFrame) -> pd.DataFrame:
     return clean_data(df)
 
 @step
-def save_data_step(df: pd.DataFrame, output_path: str):
-    df.to_csv(output_path, index=False)
+def save_data_step(data_path: str, df: pd.DataFrame):
+    """Save DataFrame to S3 using the artifact store's authenticated filesystem."""
+    # Get the active artifact store
+    artifact_store = Client().active_stack.artifact_store
+    if not isinstance(artifact_store, S3ArtifactStore):
+        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+
+    # Use the artifact store's underlying filesystem
+    fs = artifact_store.filesystem
+
+    # Construct the full S3 path
+    output_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+
+
+    # Write CSV using the authenticated filesystem
+    with fs.open(output_path, mode="w") as f:
+        df.to_csv(f, index=False)
 
 
 # FEATURE ENGINEERING STEPS

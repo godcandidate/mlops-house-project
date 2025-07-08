@@ -6,12 +6,11 @@ from pathlib import Path
 # zenml login --local --docker
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
+
 @pipeline(enable_cache=False)
 def data_processing_pipeline(
-    input_path = str(PROJECT_ROOT / "data" / "raw" / "house_data.csv"),
-    output_path = str(PROJECT_ROOT / "data" / "processed" / "cleaned_house_data.csv")
 ):
     """Modular data processing pipeline."""
-    raw_df = load_data_step(input_path)
+    raw_df = load_data_step(data_path="dev/raw/house_data.csv")
     cleaned_df = clean_data_step(raw_df)
-    save_data_step(cleaned_df, output_path)
+    save_data_step(data_path="dev/processed/cleaned_house_data.csv", df=cleaned_df)
