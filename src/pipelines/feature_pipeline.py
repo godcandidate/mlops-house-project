@@ -8,8 +8,6 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 # Cache set to false
 @pipeline(enable_cache=False)
 def feature_engineering_pipeline(
-    output_path: str = str(PROJECT_ROOT / "data" / "processed" / "house_data_featured.csv"),
-    preprocessor_path: str = str(PROJECT_ROOT / "models" / "preprocessor.joblib")
 ):
     """Pipeline to add features and preprocess data."""
     df = load_data_step(data_path="raw/house_data.csv")
