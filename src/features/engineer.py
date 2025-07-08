@@ -142,7 +142,10 @@ def save_features_data(df_featured: pd.DataFrame, preprocessor: ColumnTransforme
 
     # Transform data
     df_transformed = pd.DataFrame(X_transformed)
+    if y is not None:
+        df_transformed['price'] = y.values
     
+    logger.info(f"Saved fully preprocessed data to {df_transformed.shape}")
     return df_transformed
 
 def run_feature_engineering(input_file, output_file, preprocessor_file):
