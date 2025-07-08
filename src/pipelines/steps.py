@@ -1,7 +1,7 @@
 from zenml import step
 import pandas as pd
 from data.run_processing import load_data, clean_data
-from features.engineer import create_features, create_and_save_preprocessor, run_feature_engineering
+from features.engineer import create_features, create_and_save_preprocessor, save_features_data, run_feature_engineering
 from sklearn.compose import ColumnTransformer
 from typing import Dict, Any
 from sklearn.base import BaseEstimator
@@ -15,6 +15,7 @@ from botocore.errorfactory import ClientError
 from zenml.materializers.materializer_registry import materializer_registry
 import pandas as pd
 from .materializers.parquet_materializer import ParquetDataFrameMaterializer
+import joblib
 
 # Register globally
 materializer_registry.register_and_overwrite_type(
@@ -36,7 +37,8 @@ def load_data_step(data_path: str) -> pd.DataFrame:
     if not isinstance(artifact_store, S3ArtifactStore):
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
 
-    input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+    # input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+    input_path = f"s3://house-project-store/data/{data_path}"
     fs = artifact_store.filesystem  # already authenticated via service connector
 
     with fs.open(input_path, mode="rb") as f:
@@ -58,7 +60,8 @@ def save_data_step(data_path: str, df: pd.DataFrame):
     fs = artifact_store.filesystem
 
     # Construct the full S3 path
-    output_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+   # output_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
+    output_path = f"s3://house-project-store/data/{data_path}"
 
 
     # Write CSV using the authenticated filesystem
@@ -72,9 +75,23 @@ def create_features_step(df: pd.DataFrame) -> pd.DataFrame:
     return create_features(df)
 
 @step
-def create_preprocessor_step(df: pd.DataFrame, preprocessor_path: str):
-    """Step to create, fit, and save the preprocessor."""
-    return create_and_save_preprocessor(df, preprocessor_path)
+def save_preprocessor_step(df_featured: pd.DataFrame):
+    """Step to save the preprocessor and save featured data."""
+    preprocessor = create_and_save_preprocessor(df_featured)
+    featured_data = save_features_data(df_featured, preprocessor)
+
+    artifact_store = Client().active_stack.artifact_store
+    if not isinstance(artifact_store, S3ArtifactStore):
+        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+    fs = artifact_store.filesystem
+
+    output_path = f"s3://house-project-store/models/preprocessor.pkl"
+    featured_data_path = f"s3://house-project-store/data/processed/featured_house_data.csv"
+
+    with fs.open(output_path, mode="wb") as f:
+        joblib.dump(preprocessor, f)
+    with fs.open(featured_data_path, mode="wb") as f:
+        featured_data.to_csv(f, index=False)
 
 @step
 def run_preprocessing_step(

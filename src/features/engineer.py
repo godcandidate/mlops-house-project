@@ -79,7 +79,7 @@ def create_preprocessor():
     
     return preprocessor
 
-def create_and_save_preprocessor(df: pd.DataFrame, preprocessor_path: str):
+def create_and_save_preprocessor(df: pd.DataFrame):
     """
     Create, fit, and save a preprocessor using feature groups defined internally.
     
@@ -127,11 +127,23 @@ def create_and_save_preprocessor(df: pd.DataFrame, preprocessor_path: str):
     X = df[available_numerical + available_categorical]
     preprocessor.fit(X)
 
-    # Save the preprocessor
-    joblib.dump(preprocessor, preprocessor_path)
-    logger.info(f"Saved preprocessor to {preprocessor_path}")
+    # # Save the preprocessor
+    # joblib.dump(preprocessor, preprocessor_path)
+    # logger.info(f"Saved preprocessor to {preprocessor_path}")
 
     return preprocessor
+
+def save_features_data(df_featured: pd.DataFrame, preprocessor: ColumnTransformer):
+
+    X = df_featured.drop(columns=['price'], errors='ignore')  # Features only
+    y = df_featured['price'] if 'price' in df_featured.columns else None  # Target column (if available)
+    X_transformed = preprocessor.transform(X)
+    logger.info("Saving transformed featured data")
+
+    # Transform data
+    df_transformed = pd.DataFrame(X_transformed)
+    
+    return df_transformed
 
 def run_feature_engineering(input_file, output_file, preprocessor_file):
     """Full feature engineering pipeline."""
