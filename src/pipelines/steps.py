@@ -167,7 +167,16 @@ def save_best_model_step(
 # MODEL TRAINING STEPS
 @step
 def load_config_step(config_path: str) -> Dict[str, Any]:
-    return load_config(config_path)
+    """Load model configuration from YAML file."""
+    artifact_store = Client().active_stack.artifact_store
+    if not isinstance(artifact_store, S3ArtifactStore):
+        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+    fs = artifact_store.filesystem
+    input_path = f"s3://house-project-store/configs/{config_path}"
+    with fs.open(input_path, mode="r") as f:
+        return yaml.safe_load(f)
+
+
 
 @step
 def train_model_step(config: Dict[str, Any], data: pd.DataFrame) -> BaseEstimator:
