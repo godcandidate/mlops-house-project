@@ -11,6 +11,6 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 def data_processing_pipeline(
 ):
     """Modular data processing pipeline."""
-    raw_df = load_data_step(data_path="dev/raw/house_data.csv")
+    raw_df = load_data_step(data_path="raw/house_data.csv")
     cleaned_df = clean_data_step(raw_df)
-    save_data_step(data_path="dev/processed/cleaned_house_data.csv", df=cleaned_df)
+    save_data_step(data_path="processed/cleaned_house_data.csv", df=cleaned_df)
