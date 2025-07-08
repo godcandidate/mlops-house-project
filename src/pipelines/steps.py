@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from typing import Dict, Any
 from sklearn.base import BaseEstimator
 from models.train_model import load_config, train_model, evaluate_model, log_to_mlflow
-from experimentation.experiment import load_data_exp, select_features_with_rfe, train_and_evaluate_models, find_best_model, save_model_config
+from experimentation.experiment import select_features_with_rfe, train_and_evaluate_models, find_best_model, save_best_model
 from typing import Tuple
 from typing import Annotated
 from zenml.integrations.s3.artifact_stores import S3ArtifactStore
@@ -16,13 +16,24 @@ from zenml.materializers.materializer_registry import materializer_registry
 import pandas as pd
 from .materializers.parquet_materializer import ParquetDataFrameMaterializer
 import joblib
+import yaml
+from sklearn.model_selection import train_test_split
+
 
 # Register globally
 materializer_registry.register_and_overwrite_type(
     key=pd.DataFrame,
     type_=ParquetDataFrameMaterializer
 )
+# materializer_registry.register_and_overwrite_type(
+#     key=pd.Series,
+#     type_=ParquetSeriesMaterializer
+# )
 
+# materializer_registry.register_and_overwrite_type(
+#     key=pd.Index,
+#     type_=ParquetIndexMaterializer
+# )
 
 # DATA PROCESSING STEPS
 
@@ -93,18 +104,12 @@ def save_preprocessor_step(df_featured: pd.DataFrame):
     with fs.open(featured_data_path, mode="wb") as f:
         featured_data.to_csv(f, index=False)
 
-@step
-def run_preprocessing_step(
-    input_file: str,
-    output_file: str,
-    preprocessor_file: str
-):
-    return run_feature_engineering(input_file, output_file, preprocessor_file)
 
 # EXPERIMENTATION STEPS
+
 # Step 1: Load Data + Select Features
 @step
-def load_and_select_step(data_path: str) -> Tuple[
+def load_and_select_step(df: pd.DataFrame) -> Tuple[
     Annotated[pd.DataFrame, "X_train_selected"],
     Annotated[pd.DataFrame, "X_test_selected"],
     Annotated[pd.Series, "y_train"],
@@ -112,7 +117,10 @@ def load_and_select_step(data_path: str) -> Tuple[
     Annotated[pd.Index, "selected_features"]
 ]:
     """Load dataset and perform feature selection using RFE."""
-    X_train, X_test, y_train, y_test = load_data_exp(data_path)
+    X = df.drop('price', axis=1)
+    y = df['price']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
     selected_features, _ = select_features_with_rfe(X_train, y_train)
     
     return (
@@ -137,19 +145,24 @@ def train_models_step(
 
 
 # Step 3: Find Best Model + Save Config
-@step(enable_cache=False)
-def get_best_model_step(
+@step
+def save_best_model_step(
     results: Dict[str, Any],
     selected_features: pd.Index,
-    config_path: str
-) -> Tuple[
-    Annotated[str, "best_model_name"],
-    Annotated[Dict[str, Any], "best_model_result"]
-]:
+) -> Annotated[Dict[str, Any], "model_config"]:
     """Find best model and save config file."""
     best_name, best_result = find_best_model(results)
-    save_model_config(best_name, best_result, selected_features, config_path)
-    return best_name, best_result
+    model_config = save_best_model(best_name, best_result, selected_features)
+
+    artifact_store = Client().active_stack.artifact_store
+    if not isinstance(artifact_store, S3ArtifactStore):
+        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+    fs = artifact_store.filesystem
+
+    output_path = f"s3://house-project-store/configs/model_config.yaml"
+    with fs.open(output_path, mode="w") as f:
+        yaml.dump(model_config, f)
+    return model_config
 
 # MODEL TRAINING STEPS
 @step

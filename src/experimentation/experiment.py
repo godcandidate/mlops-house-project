@@ -105,6 +105,25 @@ def find_best_model(results):
     logger.info(f"   RMSE: {best_result['rmse']:.2f}")
     return best_name, best_result
 
+def save_best_model(best_name, best_result, selected_features):
+    """Save the best model config to YAML."""
+    model_config = {
+        'model': {
+            'name': 'house_price_model',
+            'best_model': best_name,
+            'target_variable': 'price',
+            'parameters': best_result['params'],
+            'r2_score': best_result['r2'],
+            'mae': best_result['mae'],
+            'feature_sets': {
+                'rfe': list(selected_features)
+            }
+        }
+    }
+
+    return model_config
+
+
 def save_model_config(best_name, best_result, selected_features, output_path):
     """Save the best model config to YAML."""
     logger.info(f"Saving model config to {output_path}")
