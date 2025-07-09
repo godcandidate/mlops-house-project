@@ -16,4 +16,4 @@ jobs:
             git pull 
             source .venv/bin/activate
             cd src
-            python run_model_pipeline.py
+            python run_data_pipeline.py
