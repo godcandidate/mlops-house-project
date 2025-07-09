@@ -14,4 +14,6 @@ jobs:
           script: |
             cd ~/mlops-project/mlops-house-project
             git pull 
-            ls
+            source .venv/bin/activate
+            cd src
+            python run_model_pipeline.py
