@@ -1,0 +1,33 @@
+name: Remote SSH Command to EC2
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute remote SSH commands on EC2 instance
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.MLOPS_SERVER_HOST }}
+          username: ubuntu # or ec2-user depending on your instance
+          key: ${{ secrets.MLOPS_SERVER_KEY }} # private SSH key stored in GitHub Secrets
+          port: 22
+          script: whoami
+# # .github/workflows/deploy.yml
+# name: Run ZenML Pipeline
+
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   run-pipeline:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Run pipeline on EC2
+#         run: |
+#           ssh -o StrictHostKeyChecking=no ubuntu@your-ec2-ip "
+#             cd ~/mlops-project &&
+#             git pull &&
+#             source venv/bin/activate &&
+#             python run_pipeline.py"
