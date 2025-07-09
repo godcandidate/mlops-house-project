@@ -47,9 +47,8 @@ def load_data_step(data_path: str) -> pd.DataFrame:
 
     if not isinstance(artifact_store, S3ArtifactStore):
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
-
     # input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
-    input_path = f"s3://house-project-store/data/{data_path}"
+    input_path = f"s3://mlops-house-project/data/raw/{data_path}"
     fs = artifact_store.filesystem  # already authenticated via service connector
 
     with fs.open(input_path, mode="rb") as f:
@@ -72,7 +71,7 @@ def save_data_step(data_path: str, df: pd.DataFrame):
 
     # Construct the full S3 path
    # output_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
-    output_path = f"s3://house-project-store/data/{data_path}"
+    output_path = f"s3://mlops-house-project/data/{data_path}"
 
 
     # Write CSV using the authenticated filesystem
@@ -96,8 +95,8 @@ def save_preprocessor_step(df_featured: pd.DataFrame):
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
     fs = artifact_store.filesystem
 
-    output_path = f"s3://house-project-store/models/preprocessor.pkl"
-    featured_data_path = f"s3://house-project-store/data/processed/featured_house_data.csv"
+    output_path = f"s3://mlops-house-project/models/preprocessor.pkl"
+    featured_data_path = f"s3://mlops-house-project/data/processed/featured_house_data.csv"
 
     with fs.open(output_path, mode="wb") as f:
         joblib.dump(preprocessor, f)
@@ -159,7 +158,7 @@ def save_best_model_step(
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
     fs = artifact_store.filesystem
 
-    output_path = f"s3://house-project-store/configs/model_config.yaml"
+    output_path = f"s3://mlops-house-project/configs/model_config.yaml"
     with fs.open(output_path, mode="w") as f:
         yaml.dump(model_config, f)
     return model_config
@@ -172,7 +171,7 @@ def load_config_step(config_path: str) -> Dict[str, Any]:
     if not isinstance(artifact_store, S3ArtifactStore):
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
     fs = artifact_store.filesystem
-    input_path = f"s3://house-project-store/configs/{config_path}"
+    input_path = f"s3://mlops-house-project/configs/{config_path}"
     with fs.open(input_path, mode="r") as f:
         return yaml.safe_load(f)
 
