@@ -9,24 +9,9 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.MLOPS_SERVER_HOST }}
-          username: ubuntu # or ec2-user depending on your instance
-          key: ${{ secrets.MLOPS_SERVER_KEY }} # private SSH key stored in GitHub Secrets
-
-# # .github/workflows/deploy.yml
-# name: Run ZenML Pipeline
-
-# on:
-#   push:
-#     branches: [main]
-
-# jobs:
-#   run-pipeline:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Run pipeline on EC2
-#         run: |
-#           ssh -o StrictHostKeyChecking=no ubuntu@your-ec2-ip "
-#             cd ~/mlops-project &&
-#             git pull &&
-#             source venv/bin/activate &&
-#             python run_pipeline.py"
+          username: ubuntu
+          key: ${{ secrets.MLOPS_SERVER_KEY }}
+          script: |
+            cd ~/mlops-project/mlops-house-project &&
+            git pull &&
+            ls &&
