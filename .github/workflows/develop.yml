@@ -12,6 +12,6 @@ jobs:
           username: ubuntu
           key: ${{ secrets.MLOPS_SERVER_KEY }}
           script: |
-            cd ~/mlops-project/mlops-house-project &&
-            git pull &&
-            ls &&
+            cd ~/mlops-project/mlops-house-project
+            git pull 
+            ls
