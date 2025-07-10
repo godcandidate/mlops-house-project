@@ -16,4 +16,4 @@ jobs:
             git pull 
             source .venv/bin/activate
             cd src
-            python run_feature_pipeline.py
+            python run_experiment_pipeline.py
