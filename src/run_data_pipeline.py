@@ -6,4 +6,4 @@ if __name__ == "__main__":
     repo = Client().get_code_repository("mlops-house-project")
 
     # Run the pipeline with the associated code repository
-    data_processing_pipeline().run(code_repository=repo)
+    data_processing_pipeline.run(code_repository=repo)
