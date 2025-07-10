@@ -48,7 +48,7 @@ def load_data_step(data_path: str) -> pd.DataFrame:
     if not isinstance(artifact_store, S3ArtifactStore):
         raise ValueError("Active artifact store must be of type S3ArtifactStore")
     # input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
-    input_path = f"s3://mlops-house-project/data/raw/{data_path}"
+    input_path = f"s3://mlops-house-project/data/{data_path}"
     fs = artifact_store.filesystem  # already authenticated via service connector
 
     with fs.open(input_path, mode="rb") as f:
