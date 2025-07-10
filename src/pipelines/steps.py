@@ -62,18 +62,15 @@ def clean_data_step(df: pd.DataFrame) -> pd.DataFrame:
 
 @step
 def save_data_step(data_path: str, df: pd.DataFrame):
-    """Save DataFrame to S3 using the artifact store's authenticated filesystem."""
-    # Get the active artifact store
-    artifact_store = Client().active_stack.artifact_store
-    if not isinstance(artifact_store, S3ArtifactStore):
-        raise ValueError("Active artifact store must be of type S3ArtifactStore")
+    """Load data directly from S3 using IAM permissions of EC2 instance."""
+    fs = s3fs.S3FileSystem()
 
-    # Use the artifact store's underlying filesystem
-    fs = artifact_store.filesystem
+    # Construct S3 path
+    output_path = f"mlops-house-project/data/{data_path}"
 
-    # Construct the full S3 path
-   # output_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
-    output_path = f"s3://mlops-house-project/data/{data_path}"
+    if not fs.exists(output_path):
+        raise FileNotFoundError(f"S3 file not found at: {output_path}")
+   
 
 
     # Write CSV using the authenticated filesystem
