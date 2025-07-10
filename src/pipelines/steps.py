@@ -18,6 +18,7 @@ from .materializers.parquet_materializer import ParquetDataFrameMaterializer
 import joblib
 import yaml
 from sklearn.model_selection import train_test_split
+import s3fs
 
 
 # Register globally
@@ -42,15 +43,16 @@ materializer_registry.register_and_overwrite_type(
 
 @step
 def load_data_step(data_path: str) -> pd.DataFrame:
-    """Load data from S3 using the artifact store's authenticated filesystem."""
-    artifact_store = Client().active_stack.artifact_store
+    """Load data directly from S3 using IAM permissions of EC2 instance."""
+    fs = s3fs.S3FileSystem()
 
-    if not isinstance(artifact_store, S3ArtifactStore):
-        raise ValueError("Active artifact store must be of type S3ArtifactStore")
-    # input_path = f"{artifact_store.path.rstrip('/')}/{data_path}"
-    input_path = f"s3://mlops-house-project/data/{data_path}"
-    fs = artifact_store.filesystem  # already authenticated via service connector
+    # Construct S3 path
+    input_path = f"mlops-house-project/data/{data_path}"
 
+    if not fs.exists(input_path):
+        raise FileNotFoundError(f"S3 file not found at: {input_path}")
+    
+    # Read CSV using the authenticated filesystem
     with fs.open(input_path, mode="rb") as f:
         return pd.read_csv(f)
         
