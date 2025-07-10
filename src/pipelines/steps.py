@@ -70,8 +70,6 @@ def save_data_step(data_path: str, df: pd.DataFrame):
 
     if not fs.exists(output_path):
         raise FileNotFoundError(f"S3 file not found at: {output_path}")
-   
-
 
     # Write CSV using the authenticated filesystem
     with fs.open(output_path, mode="w") as f:
@@ -89,13 +87,12 @@ def save_preprocessor_step(df_featured: pd.DataFrame):
     preprocessor = create_and_save_preprocessor(df_featured)
     featured_data = save_features_data(df_featured, preprocessor)
 
-    artifact_store = Client().active_stack.artifact_store
-    if not isinstance(artifact_store, S3ArtifactStore):
-        raise ValueError("Active artifact store must be of type S3ArtifactStore")
-    fs = artifact_store.filesystem
+    fs = s3fs.S3FileSystem()
 
-    output_path = f"s3://mlops-house-project/models/preprocessor.pkl"
-    featured_data_path = f"s3://mlops-house-project/data/processed/featured_house_data.csv"
+    # Construct S3 path
+    output_path = f"mlops-house-project/models/preprocessor.pkl"
+    featured_data_path = f"mlops-house-project/data/processed/featured_house_data.csv"
+
 
     with fs.open(output_path, mode="wb") as f:
         joblib.dump(preprocessor, f)
