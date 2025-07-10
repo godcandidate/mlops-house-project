@@ -1,11 +1,43 @@
-name: Remote SSH Command to EC2
-on: [push]
+name: Run on ZenML Server
+on:
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      pipeline_type:
+        type: choice
+        options:
+          - data_cleaning
+          - feature_engineering
+          - experiment
+        description: Choose which pipeline to run
 
 jobs:
-  build:
+  run-pipeline:
     runs-on: ubuntu-latest
     steps:
-      - name: Execute remote SSH commands on EC2 instance
+      - name:  Run ${{ github.event.inputs.pipeline_type }} pipeline
+        run: |
+          echo "==============================="
+          echo " RUNNING ${{ github.event.inputs.pipeline_type }} PIPELINE "
+          echo "==============================="
+
+      - name: Set Script Name
+        id: set_script
+        run: |
+          if [ "${{ github.event.inputs.pipeline_type }}" == "data_cleaning" ]; then
+            echo "script=run_data_pipeline.py" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.inputs.pipeline_type }}" == "feature_engineering" ]; then
+            echo "script=run_feature_pipeline.py" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.inputs.pipeline_type }}" == "experiment" ]; then
+            echo "script=run_experiment_pipeline.py" >> $GITHUB_OUTPUT
+          else
+            echo "No valid pipeline selected"
+            exit 1
+          fi
+
+      - name: Run Selected Pipeline
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.MLOPS_SERVER_HOST }}
@@ -13,7 +45,7 @@ jobs:
           key: ${{ secrets.MLOPS_SERVER_KEY }}
           script: |
             cd ~/mlops-project/mlops-house-project
-            git pull 
+            git pull
             source .venv/bin/activate
             cd src
-            python run_model_pipeline.py
+            python ${{ steps.set_script.outputs.script }}
