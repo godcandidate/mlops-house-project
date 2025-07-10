@@ -14,7 +14,7 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 @pipeline(enable_cache=False)
 def model_training_pipeline(
     model_name: str = "house_price_model",
-    mlflow_tracking_uri: str = "http://localhost:5555"
+    mlflow_tracking_uri: str = "http://localhost:5000"
 ):
     # Set mlflow tracking uri
     mlflow.set_tracking_uri(mlflow_tracking_uri)
