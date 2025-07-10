@@ -1,8 +1,8 @@
 name: Run on ZenML Server
 on:
-  push:
-    branches:
-      - '*'
+  # push:
+  #   branches:
+  #     - '*'
   workflow_dispatch:
     inputs:
       pipeline_type:
