@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    command: mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root s3://mlops-house-project/mlflow-artifacts
+    container_name: mlflow-tracking-server
+    volumes:
+      - mlflow_data:/mlflow
+
+  zenml:
+    image: zenmldocker/zenml-server
+    ports:
+      - "80:8080"
+    container_name: zenml-server
+    volumes:
+      - zenml-data:/data
+      # Mount local artifact store to SAME PATH inside container
+      - /home/ubuntu/zenml/local_artifact_store:/home/ubuntu/zenml/local_artifact_store
+
+volumes:
+  mlflow_data:
+  zenml-data:
