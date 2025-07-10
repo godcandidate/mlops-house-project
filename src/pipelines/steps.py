@@ -68,9 +68,6 @@ def save_data_step(data_path: str, df: pd.DataFrame):
     # Construct S3 path
     output_path = f"mlops-house-project/data/{data_path}"
 
-    if not fs.exists(output_path):
-        raise FileNotFoundError(f"S3 file not found at: {output_path}")
-
     # Write CSV using the authenticated filesystem
     with fs.open(output_path, mode="w") as f:
         df.to_csv(f, index=False)
@@ -149,12 +146,12 @@ def save_best_model_step(
     best_name, best_result = find_best_model(results)
     model_config = save_best_model(best_name, best_result, selected_features)
 
-    artifact_store = Client().active_stack.artifact_store
-    if not isinstance(artifact_store, S3ArtifactStore):
-        raise ValueError("Active artifact store must be of type S3ArtifactStore")
-    fs = artifact_store.filesystem
+    """Load data directly from S3 using IAM permissions of EC2 instance."""
+    fs = s3fs.S3FileSystem()
 
-    output_path = f"s3://mlops-house-project/configs/model_config.yaml"
+    # Construct S3 path
+    output_path = f"mlops-house-project/configs/model_config.yaml"
+    
     with fs.open(output_path, mode="w") as f:
         yaml.dump(model_config, f)
     return model_config
