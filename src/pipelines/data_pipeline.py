@@ -7,7 +7,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 
-@pipeline(enable_cache=False)
+@pipeline(enable_cache=False, code_repository="mlops-house-project")
 def data_processing_pipeline(
 ):
     """Modular data processing pipeline."""
