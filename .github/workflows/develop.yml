@@ -34,7 +34,7 @@ jobs:
             echo "script=run_experiment_pipeline.py" >> $GITHUB_OUTPUT
           else
             echo "No valid pipeline selected"
-            exit 1
+            echo "script=run_data_pipeline.py" >> $GITHUB_OUTPUT
           fi
 
       - name: Run Selected Pipeline
