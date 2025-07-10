@@ -16,4 +16,5 @@ jobs:
             git pull 
             source .venv/bin/activate
             cd src
+            zenml stack set dev_stack
             python run_data_pipeline.py
