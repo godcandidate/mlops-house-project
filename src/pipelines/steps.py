@@ -156,18 +156,18 @@ def save_best_model_step(
         yaml.dump(model_config, f)
     return model_config
 
+
 # MODEL TRAINING STEPS
 @step
 def load_config_step(config_path: str) -> Dict[str, Any]:
     """Load model configuration from YAML file."""
-    artifact_store = Client().active_stack.artifact_store
-    if not isinstance(artifact_store, S3ArtifactStore):
-        raise ValueError("Active artifact store must be of type S3ArtifactStore")
-    fs = artifact_store.filesystem
-    input_path = f"s3://mlops-house-project/configs/{config_path}"
+    fs = s3fs.S3FileSystem()
+
+    # Construct S3 path
+    input_path = f"mlops-house-project/configs/{config_path}"
+    
     with fs.open(input_path, mode="r") as f:
         return yaml.safe_load(f)
-
 
 
 @step
