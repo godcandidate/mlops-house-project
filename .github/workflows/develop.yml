@@ -1,4 +1,4 @@
-name: Run on ZenML Server
+name: MLOps Pipeline Workflow
 on:
   push:
     branches:
