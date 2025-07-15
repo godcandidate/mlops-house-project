@@ -11,6 +11,7 @@ source zenml-venv/bin/activate
 pip install zenml
 zenml init
 zenml integration install github s3
+zenml integration install aws
 
 
 zenml connect server_ip
@@ -40,13 +41,3 @@ zenml stack register prod_stack \
 
 zenml stack set prod_stack
 http://34.240.148.189/devices/verify?device_id=d09b6c3d-0242-474b-8a04-07bdc0904f8e&user_code=59e74b37456078e66876ece7db13c5b2
-
-
-# Register the dev stack with local artifact store
-zenml artifact-store register local_store \
-  --flavor=local \
-  --path=/home/ubuntu/zenml/local_artifact_store
-
-zenml stack register dev_stack \
-  --orchestrator default \
-  --artifact-store local_store
