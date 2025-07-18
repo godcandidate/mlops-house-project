@@ -1,0 +1,6 @@
+streamlit
+pandas
+evidently
+jsonlines
+streamlit-autorefresh
+plotly

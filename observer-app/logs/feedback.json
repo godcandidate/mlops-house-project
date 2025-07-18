@@ -1,0 +1,302 @@
+[
+  {
+    "prediction_id": "8fb08723-7a13-4b75-a59b-e87c61c738b2",
+    "user_feedback": "negative",
+    "expected_price": 335851.89
+  },
+  {
+    "prediction_id": "3a6f9e1c-4d5a-4e1b-9f0d-3e7a6f8b4a0c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c1a2d3e4-f5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d2b3c4a5-e6f7-8d9c-0a1b-2c3d4e5f6a7b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e3c4d5b6-f7a8-9d0c-1b2a-3d4e5f6c7b8a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f4d5e6c7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
+    "user_feedback": "negative",
+    "expected_price": 419890.03
+  },
+  {
+    "prediction_id": "a5e6f7d8-b9c0-1d2e-3f4a-5b6c7d8e9f0a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b6f7e8d9-c0a1-2e3f-4d5a-6b7c8d9e0f1a",
+    "user_feedback": "negative",
+    "expected_price": 377687.79
+  },
+  {
+    "prediction_id": "c7e8d9f0-a1b2-3c4d-5e6f-7a8b9c0d1e2f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d8f9e0a1-b2c3-4d5e-6f7a-8b9c0d1e2f3a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e9a0b1c2-d3f4-5e6f-7a8b-9c0d1e2f3a4b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f0b1c2d3-e4f5-6a7b-8c9d-0e1f2a3b4c5d",
+    "user_feedback": "negative",
+    "expected_price": 422531.43
+  },
+  {
+    "prediction_id": "a1c2d3e4-f5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b2d3e4f5-a6c7-8d9e-0f1a-2b3c4d5e6f7a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c3e4f5a6-b7d8-9e0f-1a2b-3c4d5e6f7a8b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d4f5a6b7-c8e9-0f1a-2b3c-4d5e6f7a8b9c",
+    "user_feedback": "negative",
+    "expected_price": 444535.03
+  },
+  {
+    "prediction_id": "e5a6b7c8-d9f0-1a2b-3c4d-5e6f7a8b9c0d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f6b7c8d9-e0a1-2b3c-4d5e-6f7a8b9c0d1e",
+    "user_feedback": "negative",
+    "expected_price": 371986.28
+  },
+  {
+    "prediction_id": "a7c8d9e0-f1b2-3c4d-5e6f-7a8b9c0d1e2f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b8d9e0f1-a2c3-4d5e-6f7a-8b9c0d1e2f3a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c9e0f1a2-b3d4-5e6f-7a8b-9c0d1e2f3a4b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d0f1a2b3-c4e5-6f7a-8b9c-0d1e2f3a4b5c",
+    "user_feedback": "negative",
+    "expected_price": 271798.49
+  },
+  {
+    "prediction_id": "e1a2b3c4-d5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f2b3c4d5-e6a7-8b9c-0d1e-2f3a4b5c6d7e",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a3c4d5e6-f7b8-9c0d-1e2f-3a4b5c6d7e8f",
+    "user_feedback": "negative",
+    "expected_price": 412446.64
+  },
+  {
+    "prediction_id": "b4d5e6f7-a8c9-0d1e-2f3a-4b5c6d7e8f9a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c5e6f7a8-b9d0-1e2f-3a4b-5c6d7e8f9a0b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d6f7a8b9-c0e1-2f3a-4b5c-6d7e8f9a0b1c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e7a8b9c0-d1f2-3a4b-5c6d-7e8f9a0b1c2d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f8b9c0d1-e2a3-4b5c-6d7e-8f9a0b1c2d3e",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a9c0d1e2-f3b4-5c6d-7e8f-9a0b1c2d3e4f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b0d1e2f3-a4c5-6d7e-8f9a-0b1c2d3e4f5a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c1e2f3a4-b5d6-7e8f-9a0b-1c2d3e4f5a6b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d2f3a4b5-c6e7-8f9a-0b1c-2d3e4f5a6b7c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e3a4b5c6-d7f8-9a0b-1c2d-3e4f5a6b7c8d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f4b5c6d7-e8a9-0b1c-2d3e-4f5a6b7c8d9e",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a5c6d7e8-f9b0-1c2d-3e4f-5a6b7c8d9e0f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b6d7e8f9-a0c1-2d3e-4f5a-6b7c8d9e0f1a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c7e8f9a0-b1d2-3e4f-5a6b-7c8d9e0f1a2b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d8f9a0b1-c2e3-4f5a-6b7c-8d9e0f1a2b3c",
+    "user_feedback": "negative",
+    "expected_price": 366351.73
+  },
+  {
+    "prediction_id": "e9a0b1c2-d3f4-5e6f-7a8b-9c0d1e2f3a4b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f0b1c2d3-e4f5-6a7b-8c9d-0e1f2a3b4c5d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a1c2d3e4-f5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b2d3e4f5-a6c7-8d9e-0f1a-2b3c4d5e6f7a",
+    "user_feedback": "negative",
+    "expected_price": 429071.07
+  },
+  {
+    "prediction_id": "c3e4f5a6-b7d8-9e0f-1a2b-3c4d5e6f7a8b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d4f5a6b7-c8e9-0f1a-2b3c-4d5e6f7a8b9c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e5a6b7c8-d9f0-1a2b-3c4d-5e6f7a8b9c0d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f6b7c8d9-e0a1-2b3c-4d5e-6f7a8b9c0d1e",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a7c8d9e0-f1b2-3c4d-5e6f-7a8b9c0d1e2f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b8d9e0f1-a2c3-4d5e-6f7a-8b9c0d1e2f3a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c9e0f1a2-b3d4-5e6f-7a8b-9c0d1e2f3a4b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d0f1a2b3-c4e5-6f7a-8b9c-0d1e2f3a4b5c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e1a2b3c4-d5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f2b3c4d5-e6a7-8b9c-0d1e-2f3a4b5c6d7e",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "a3c4d5e6-f7b8-9c0d-1e2f-3a4b5c6d7e8f",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "b4d5e6f7-a8c9-0d1e-2f3a-4b5c6d7e8f9a",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "c5e6f7a8-b9d0-1e2f-3a4b-5c6d7e8f9a0b",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "d6f7a8b9-c0e1-2f3a-4b5c-6d7e8f9a0b1c",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "e7a8b9c0-d1f2-3a4b-5c6d-7e8f9a0b1c2d",
+    "user_feedback": "positive",
+    "expected_price": null
+  },
+  {
+    "prediction_id": "f8b9c0d1-e2a3-4b5c-6d7e-8f9a0b1c2d3e",
+    "user_feedback": "positive",
+    "expected_price": null
+  }
+]

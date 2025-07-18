@@ -1,0 +1,21 @@
+observability_dashboard/
+│
+├── dashboard.py                  # Main entry point
+├── requirements.txt              # Dependencies
+├── README.md                     # Instructions
+│
+├── logs/
+│   ├── inference_logs.json       # Predictions from your model
+│   └── feedback_logs.json        # User feedback
+│
+├── reports/
+│   ├── data_drift_report.html    # Evidently report
+│   └── prediction_drift_report.html
+│
+└── pages/
+    ├── overview.py
+    ├── data_drift.py
+    ├── prediction_drift.py
+    ├── model_performance.py
+    ├── user_feedback.py
+    └── ab_testing.py 
