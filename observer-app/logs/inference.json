@@ -30,7 +30,7 @@
       "condition": "Fair",
       "house_age": 58,
       "bed_bath_ratio": 1.33,
-      "price_per_sqft": 259.00
+      "price_per_sqft": 259.0
     },
     "predicted_price": 429875.56,
     "prediction_time": "2025-01-02T11:24:17"
@@ -56,7 +56,7 @@
   {
     "prediction_id": "d2b3c4a5-e6f7-8d9c-0a1b-2c3d4e5f6a7b",
     "model_name": "house_price_regressor",
-    "model_version": "v1.0",
+    "model_version": "v2.0",
     "input_data": {
       "sqft": 2590,
       "bedrooms": 3,
@@ -92,7 +92,7 @@
   {
     "prediction_id": "f4d5e6c7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
     "model_name": "house_price_regressor",
-    "model_version": "v1.0",
+    "model_version": "v2.0",
     "input_data": {
       "sqft": 1930,
       "bedrooms": 3,
@@ -122,7 +122,7 @@
       "bed_bath_ratio": 1.0,
       "price_per_sqft": 253.84
     },
-    "predicted_price": 441688.30,
+    "predicted_price": 441688.3,
     "prediction_time": "2025-01-07T16:22:15"
   },
   {
@@ -138,7 +138,7 @@
       "condition": "Good",
       "house_age": 29,
       "bed_bath_ratio": 1.2,
-      "price_per_sqft": 138.00
+      "price_per_sqft": 138.0
     },
     "predicted_price": 359333.59,
     "prediction_time": "2025-01-08T17:11:08"
@@ -146,7 +146,7 @@
   {
     "prediction_id": "c7e8d9f0-a1b2-3c4d-5e6f-7a8b9c0d1e2f",
     "model_name": "house_price_regressor",
-    "model_version": "v1.0",
+    "model_version": "v2.0",
     "input_data": {
       "sqft": 1680,
       "bedrooms": 2,
@@ -228,7 +228,7 @@
       "condition": "Good",
       "house_age": 33,
       "bed_bath_ratio": 1.2,
-      "price_per_sqft": 109.70
+      "price_per_sqft": 109.7
     },
     "predicted_price": 270963.25,
     "prediction_time": "2025-01-13T22:16:37"
@@ -272,7 +272,7 @@
   {
     "prediction_id": "d4f5a6b7-c8e9-0f1a-2b3c-4d5e6f7a8b9c",
     "model_name": "house_price_regressor",
-    "model_version": "v1.0",
+    "model_version": "v2.0",
     "input_data": {
       "sqft": 1610,
       "bedrooms": 2,
@@ -284,7 +284,7 @@
       "bed_bath_ratio": 1.33,
       "price_per_sqft": 270.75
     },
-    "predicted_price": 435902.20,
+    "predicted_price": 435902.2,
     "prediction_time": "2025-01-16T01:42:46"
   },
   {
@@ -302,7 +302,7 @@
       "bed_bath_ratio": 1.5,
       "price_per_sqft": 150.99
     },
-    "predicted_price": 339934.10,
+    "predicted_price": 339934.1,
     "prediction_time": "2025-01-17T02:31:29"
   },
   {
@@ -354,7 +354,7 @@
       "condition": "Good",
       "house_age": 40,
       "bed_bath_ratio": 1.5,
-      "price_per_sqft": 202.00
+      "price_per_sqft": 202.0
     },
     "predicted_price": 395909.28,
     "prediction_time": "2025-01-20T04:57:38"
@@ -426,9 +426,9 @@
       "condition": "Good",
       "house_age": 19,
       "bed_bath_ratio": 1.33,
-      "price_per_sqft": 40.30
+      "price_per_sqft": 40.3
     },
-    "predicted_price": 125932.80,
+    "predicted_price": 125932.8,
     "prediction_time": "2025-01-24T08:12:30"
   },
   {
@@ -452,7 +452,7 @@
   {
     "prediction_id": "b4d5e6f7-a8c9-0d1e-2f3a-4b5c6d7e8f9a",
     "model_name": "house_price_regressor",
-    "model_version": "v1.0",
+    "model_version": "v2.0",
     "input_data": {
       "sqft": 1790,
       "bedrooms": 2,
@@ -590,7 +590,7 @@
       "bed_bath_ratio": 1.33,
       "price_per_sqft": 29.42
     },
-    "predicted_price": 90627.50,
+    "predicted_price": 90627.5,
     "prediction_time": "2025-02-02T15:30:57"
   },
   {
@@ -626,7 +626,7 @@
       "bed_bath_ratio": 1.0,
       "price_per_sqft": 236.11
     },
-    "predicted_price": 420701.40,
+    "predicted_price": 420701.4,
     "prediction_time": "2025-02-04T17:08:23"
   },
   {
@@ -662,7 +662,7 @@
       "bed_bath_ratio": 2.0,
       "price_per_sqft": 276.07
     },
-    "predicted_price": 387944.10,
+    "predicted_price": 387944.1,
     "prediction_time": "2025-02-06T18:45:49"
   },
   {
@@ -696,7 +696,7 @@
       "condition": "Fair",
       "house_age": 61,
       "bed_bath_ratio": 1.33,
-      "price_per_sqft": 266.20
+      "price_per_sqft": 266.2
     },
     "predicted_price": 434637.79,
     "prediction_time": "2025-02-08T20:23:15"
@@ -720,7 +720,7 @@
     "prediction_time": "2025-02-09T21:11:58"
   },
   {
-    "prediction_id": "e9a0b1c2-d3f4-5e6f-7a8b-9c0d1e2f3a4b",
+    "prediction_id": "387b2159-12eb-4f7d-a9fa-4383fa58b663",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -738,7 +738,7 @@
     "prediction_time": "2025-02-10T22:00:41"
   },
   {
-    "prediction_id": "f0b1c2d3-e4f5-6a7b-8c9d-0e1f2a3b4c5d",
+    "prediction_id": "39b3879b-9ef3-412e-a942-adcc94c62c74",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -756,7 +756,7 @@
     "prediction_time": "2025-02-11T22:49:24"
   },
   {
-    "prediction_id": "a1c2d3e4-f5b6-7c8d-9e0f-1a2b3c4d5e6f",
+    "prediction_id": "976a8ae4-8168-4fe4-b1f9-ba56df2635af",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -774,7 +774,7 @@
     "prediction_time": "2025-02-12T23:38:07"
   },
   {
-    "prediction_id": "b2d3e4f5-a6c7-8d9e-0f1a-2b3c4d5e6f7a",
+    "prediction_id": "edcbc0d2-2656-4081-9e9e-6bafa1cb5730",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -792,7 +792,7 @@
     "prediction_time": "2025-02-13T00:26:50"
   },
   {
-    "prediction_id": "c3e4f5a6-b7d8-9e0f-1a2b-3c4d5e6f7a8b",
+    "prediction_id": "73b90544-f778-47c2-aa04-dfd15d181bce",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -810,7 +810,7 @@
     "prediction_time": "2025-02-14T01:15:33"
   },
   {
-    "prediction_id": "d4f5a6b7-c8e9-0f1a-2b3c-4d5e6f7a8b9c",
+    "prediction_id": "e4a455c7-1f38-42c1-9bcc-2533f77cf464",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -828,7 +828,7 @@
     "prediction_time": "2025-02-15T02:04:16"
   },
   {
-    "prediction_id": "e5a6b7c8-d9f0-1a2b-3c4d-5e6f7a8b9c0d",
+    "prediction_id": "c1631e81-e260-4d4f-9e23-d133115fe0f5",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -846,7 +846,7 @@
     "prediction_time": "2025-02-16T02:52:59"
   },
   {
-    "prediction_id": "f6b7c8d9-e0a1-2b3c-4d5e-6f7a8b9c0d1e",
+    "prediction_id": "d18b2fdb-15c8-45ae-8ad8-6edb80ddadfc",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -864,7 +864,7 @@
     "prediction_time": "2025-02-17T03:41:42"
   },
   {
-    "prediction_id": "a7c8d9e0-f1b2-3c4d-5e6f-7a8b9c0d1e2f",
+    "prediction_id": "87adad6c-bd5a-4f24-90d4-c17389178b15",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -882,7 +882,7 @@
     "prediction_time": "2025-02-18T04:30:25"
   },
   {
-    "prediction_id": "b8d9e0f1-a2c3-4d5e-6f7a-8b9c0d1e2f3a",
+    "prediction_id": "8e5c6d7c-1f7e-46da-9afd-e785bc00c8b9",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -900,7 +900,7 @@
     "prediction_time": "2025-02-19T05:19:08"
   },
   {
-    "prediction_id": "c9e0f1a2-b3d4-5e6f-7a8b-9c0d1e2f3a4b",
+    "prediction_id": "3948f3d4-13d8-4d56-884c-2e5674e5480d",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -918,7 +918,7 @@
     "prediction_time": "2025-02-20T06:07:51"
   },
   {
-    "prediction_id": "d0f1a2b3-c4e5-6f7a-8b9c-0d1e2f3a4b5c",
+    "prediction_id": "4aea69a9-703a-4b75-83a9-4efe542e7496",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -936,7 +936,7 @@
     "prediction_time": "2025-02-21T06:56:34"
   },
   {
-    "prediction_id": "e1a2b3c4-d5f6-7a8b-9c0d-1e2f3a4b5c6d",
+    "prediction_id": "ab64fbc3-2424-49e3-832f-d6a337bd714d",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -954,7 +954,7 @@
     "prediction_time": "2025-02-22T07:45:17"
   },
   {
-    "prediction_id": "f2b3c4d5-e6a7-8b9c-0d1e-2f3a4b5c6d7e",
+    "prediction_id": "234ba046-1ce5-44bb-9404-022305c859e8",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -972,7 +972,7 @@
     "prediction_time": "2025-02-23T08:34:00"
   },
   {
-    "prediction_id": "a3c4d5e6-f7b8-9c0d-1e2f-3a4b5c6d7e8f",
+    "prediction_id": "a99de497-ad8d-4847-880e-e5d6f3a07039",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -990,7 +990,7 @@
     "prediction_time": "2025-02-24T09:22:43"
   },
   {
-    "prediction_id": "b4d5e6f7-a8c9-0d1e-2f3a-4b5c6d7e8f9a",
+    "prediction_id": "e825c8db-588e-4424-ad7f-0e805fb6d128",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -1008,7 +1008,7 @@
     "prediction_time": "2025-02-25T10:11:26"
   },
   {
-    "prediction_id": "c5e6f7a8-b9d0-1e2f-3a4b-5c6d7e8f9a0b",
+    "prediction_id": "2e893bee-cfda-4182-8d39-fd14f0c8a484",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -1026,7 +1026,7 @@
     "prediction_time": "2025-02-26T11:00:09"
   },
   {
-    "prediction_id": "d6f7a8b9-c0e1-2f3a-4b5c-6d7e8f9a0b1c",
+    "prediction_id": "cbdfd2f6-753f-4d44-b5ab-209292a8bfdd",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -1044,7 +1044,7 @@
     "prediction_time": "2025-02-27T11:48:52"
   },
   {
-    "prediction_id": "e7a8b9c0-d1f2-3a4b-5c6d-7e8f9a0b1c2d",
+    "prediction_id": "79b1df6d-61e4-40d0-8fd3-48682d20858f",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -1062,7 +1062,7 @@
     "prediction_time": "2025-02-28T12:37:35"
   },
   {
-    "prediction_id": "f8b9c0d1-e2a3-4b5c-6d7e-8f9a0b1c2d3e",
+    "prediction_id": "bb025f9f-4a8b-4e94-b578-d3fc372a38c0",
     "model_name": "house_price_regressor",
     "model_version": "v1.0",
     "input_data": {
@@ -1078,5 +1078,797 @@
     },
     "predicted_price": 355566.95,
     "prediction_time": "2025-03-01T13:26:18"
+  },
+  {
+    "prediction_id": "efc69232-9506-4a23-a496-ee3b15eec837",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2120,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1989,
+      "condition": "Good",
+      "house_age": 36,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 163.96
+    },
+    "predicted_price": 347585.85,
+    "prediction_time": "2025-01-01T10:12:34"
+  },
+  {
+    "prediction_id": "753c7e0e-4712-41d4-a600-b3b9af7ef3f2",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1660,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Suburb",
+      "year_built": 1967,
+      "condition": "Fair",
+      "house_age": 58,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 259.0
+    },
+    "predicted_price": 429875.56,
+    "prediction_time": "2025-02-02T11:24:17"
+  },
+  {
+    "prediction_id": "9335ca01-66ce-4e1b-ae32-b7c8ad2c04bc",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 3120,
+      "bedrooms": 4,
+      "bathrooms": 3.5,
+      "location": "Waterfront",
+      "year_built": 2007,
+      "condition": "Excellent",
+      "house_age": 18,
+      "bed_bath_ratio": 1.14,
+      "price_per_sqft": 44.53
+    },
+    "predicted_price": 138950.93,
+    "prediction_time": "2025-01-03T12:34:56"
+  },
+  {
+    "prediction_id": "abb8c342-52ea-40a7-8e78-d43d85265ac9",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2590,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1996,
+      "condition": "Excellent",
+      "house_age": 29,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 101.73
+    },
+    "predicted_price": 263489.82,
+    "prediction_time": "2025-02-04T13:45:22"
+  },
+  {
+    "prediction_id": "8b8f69c2-227c-45af-9e67-55acf02a7da2",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1410,
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "location": "Rural",
+      "year_built": 1954,
+      "condition": "Poor",
+      "house_age": 71,
+      "bed_bath_ratio": 2.0,
+      "price_per_sqft": 279.04
+    },
+    "predicted_price": 393352.32,
+    "prediction_time": "2025-01-05T14:55:10"
+  },
+  {
+    "prediction_id": "c0c05d8c-d872-4757-a76e-a790cee505b1",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1930,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1983,
+      "condition": "Good",
+      "house_age": 42,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 208.59
+    },
+    "predicted_price": 402581.92,
+    "prediction_time": "2025-02-06T15:33:41"
+  },
+  {
+    "prediction_id": "63c70055-9d94-4162-b148-2aedd8b554af",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1740,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1973,
+      "condition": "Good",
+      "house_age": 52,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 253.84
+    },
+    "predicted_price": 441688.3,
+    "prediction_time": "2025-01-07T16:22:15"
+  },
+  {
+    "prediction_id": "7f7bc0f9-1795-47d4-9c86-34ce1973f8ef",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2590,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1996,
+      "condition": "Good",
+      "house_age": 29,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 138.0
+    },
+    "predicted_price": 359333.59,
+    "prediction_time": "2025-02-08T17:11:08"
+  },
+  {
+    "prediction_id": "3a7ec999-8819-4bb9-a851-1ed16c812e21",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1680,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Rural",
+      "year_built": 1964,
+      "condition": "Fair",
+      "house_age": 61,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 206.91
+    },
+    "predicted_price": 347616.14,
+    "prediction_time": "2025-02-11T18:00:43"
+  },
+  {
+    "prediction_id": "0f03b34b-f8b0-4cee-a93f-46213a84d461",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2940,
+      "bedrooms": 4,
+      "bathrooms": 3.0,
+      "location": "Mountain",
+      "year_built": 2004,
+      "condition": "Excellent",
+      "house_age": 21,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 31.49
+    },
+    "predicted_price": 92409.13,
+    "prediction_time": "2025-02-11T19:49:27"
+  },
+  {
+    "prediction_id": "c79e8601-382b-4fe7-be72-73b4194e8f32",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2010,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1980,
+      "condition": "Good",
+      "house_age": 45,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 183.52
+    },
+    "predicted_price": 368868.17,
+    "prediction_time": "2025-02-11T20:38:11"
+  },
+  {
+    "prediction_id": "3c835ac2-7a82-40d2-8905-3c346399acf8",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1820,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1971,
+      "condition": "Good",
+      "house_age": 54,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 225.21
+    },
+    "predicted_price": 409884.96,
+    "prediction_time": "2025-01-12T21:27:54"
+  },
+  {
+    "prediction_id": "4658abfa-ac8c-4a4c-9c3b-17664bb4393e",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2470,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1992,
+      "condition": "Good",
+      "house_age": 33,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 109.7
+    },
+    "predicted_price": 270963.25,
+    "prediction_time": "2025-02-17T22:16:37"
+  },
+  {
+    "prediction_id": "4f6f6586-eea4-4000-8cdf-c482784365cb",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1380,
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "location": "Rural",
+      "year_built": 1950,
+      "condition": "Poor",
+      "house_age": 75,
+      "bed_bath_ratio": 2.0,
+      "price_per_sqft": 287.11
+    },
+    "predicted_price": 396204.15,
+    "prediction_time": "2025-02-17T23:05:20"
+  },
+  {
+    "prediction_id": "5f432365-cd4d-48ed-a6cc-1631fddde6e5",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2100,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Urban",
+      "year_built": 1995,
+      "condition": "Good",
+      "house_age": 30,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 175.35
+    },
+    "predicted_price": 368293.81,
+    "prediction_time": "2025-02-17T00:54:03"
+  },
+  {
+    "prediction_id": "330034ed-aae1-4ff5-a1b6-ff2cbd7d6803",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1610,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Suburb",
+      "year_built": 1961,
+      "condition": "Fair",
+      "house_age": 64,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 270.75
+    },
+    "predicted_price": 435902.2,
+    "prediction_time": "2025-02-17T01:42:46"
+  },
+  {
+    "prediction_id": "7e7fbbd4-1056-432d-bdd3-4a903f704fde",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2250,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Downtown",
+      "year_built": 1986,
+      "condition": "Good",
+      "house_age": 39,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 150.99
+    },
+    "predicted_price": 339934.1,
+    "prediction_time": "2025-02-17T02:31:29"
+  },
+  {
+    "prediction_id": "238d7489-670b-456b-bfd0-3a16be6d7e8f",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1690,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Rural",
+      "year_built": 1972,
+      "condition": "Fair",
+      "house_age": 53,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 211.55
+    },
+    "predicted_price": 357525.39,
+    "prediction_time": "2025-02-19T03:20:12"
+  },
+  {
+    "prediction_id": "266628e4-1b9e-4efd-9ab8-22d986b1fae4",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 3280,
+      "bedrooms": 4,
+      "bathrooms": 3.5,
+      "location": "Waterfront",
+      "year_built": 2011,
+      "condition": "Excellent",
+      "house_age": 14,
+      "bed_bath_ratio": 1.14,
+      "price_per_sqft": 36.06
+    },
+    "predicted_price": 118287.03,
+    "prediction_time": "2025-02-19T04:08:55"
+  },
+  {
+    "prediction_id": "e53ae8a0-38e0-4d53-89a0-562e77c1dde5",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1960,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1985,
+      "condition": "Good",
+      "house_age": 40,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 202.0
+    },
+    "predicted_price": 395909.28,
+    "prediction_time": "2025-02-20T04:57:38"
+  },
+  {
+    "prediction_id": "c9a15b96-abfc-4722-956b-3735bab0cbb4",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1760,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1970,
+      "condition": "Good",
+      "house_age": 55,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 244.25
+    },
+    "predicted_price": 428961.45,
+    "prediction_time": "2025-01-21T05:46:21"
+  },
+  {
+    "prediction_id": "163e3dce-05ed-42f7-856e-9339b40cd664",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2600,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1993,
+      "condition": "Excellent",
+      "house_age": 32,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 98.27
+    },
+    "predicted_price": 254260.79,
+    "prediction_time": "2025-01-22T06:35:04"
+  },
+  {
+    "prediction_id": "553f638b-2403-4202-a45b-043c5fd1131d",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1440,
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "location": "Rural",
+      "year_built": 1949,
+      "condition": "Poor",
+      "house_age": 76,
+      "bed_bath_ratio": 2.0,
+      "price_per_sqft": 259.23
+    },
+    "predicted_price": 373306.84,
+    "prediction_time": "2025-01-22T07:23:47"
+  },
+  {
+    "prediction_id": "d10142fd-5344-4603-98c8-13bfda113409",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 3100,
+      "bedrooms": 4,
+      "bathrooms": 3.0,
+      "location": "Waterfront",
+      "year_built": 2006,
+      "condition": "Good",
+      "house_age": 19,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 40.3
+    },
+    "predicted_price": 125932.8,
+    "prediction_time": "2025-01-25T08:12:30"
+  },
+  {
+    "prediction_id": "1f343dba-5227-47aa-a0e8-fc9b4c3c075c",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1900,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1978,
+      "condition": "Good",
+      "house_age": 47,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 212.53
+    },
+    "predicted_price": 403523.34,
+    "prediction_time": "2025-01-25T09:01:13"
+  },
+  {
+    "prediction_id": "091f607d-cb63-44cd-a4a0-003e0989185c",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1790,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1974,
+      "condition": "Good",
+      "house_age": 51,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 228.96
+    },
+    "predicted_price": 426109.63,
+    "prediction_time": "2025-01-29T09:49:56"
+  },
+  {
+    "prediction_id": "a298bd1b-4951-459d-a7b6-74098bf8b238",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2430,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1991,
+      "condition": "Good",
+      "house_age": 34,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 116.59
+    },
+    "predicted_price": 283044.11,
+    "prediction_time": "2025-01-29T10:38:39"
+  },
+  {
+    "prediction_id": "2584faa6-f1ed-4487-957c-9088d3ee587d",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1390,
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "location": "Rural",
+      "year_built": 1948,
+      "condition": "Poor",
+      "house_age": 77,
+      "bed_bath_ratio": 2.0,
+      "price_per_sqft": 279.15
+    },
+    "predicted_price": 388885.52,
+    "prediction_time": "2025-01-29T11:27:22"
+  },
+  {
+    "prediction_id": "2b6d913e-0550-4687-9356-ea48485c9225",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2060,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1990,
+      "condition": "Good",
+      "house_age": 35,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 179.75
+    },
+    "predicted_price": 370483.15,
+    "prediction_time": "2025-01-29T12:16:05"
+  },
+  {
+    "prediction_id": "ec0873a4-37e6-4e4c-b3ea-b26e075f732e",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1640,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Suburb",
+      "year_built": 1962,
+      "condition": "Fair",
+      "house_age": 63,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 261.46
+    },
+    "predicted_price": 427319.16,
+    "prediction_time": "2025-01-30T13:04:48"
+  },
+  {
+    "prediction_id": "78f0d334-c85c-4ad2-a2db-2511731c4b1f",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2180,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Downtown",
+      "year_built": 1988,
+      "condition": "Good",
+      "house_age": 37,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 168.49
+    },
+    "predicted_price": 368239.63,
+    "prediction_time": "2025-01-31T13:53:31"
+  },
+  {
+    "prediction_id": "266c93ab-75db-4450-b8cd-4fd924f4488c",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1710,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Rural",
+      "year_built": 1963,
+      "condition": "Fair",
+      "house_age": 62,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 196.21
+    },
+    "predicted_price": 335212.28,
+    "prediction_time": "2025-02-01T14:42:14"
+  },
+  {
+    "prediction_id": "3c362d8b-deef-4fac-84a7-af09851f7669",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 3080,
+      "bedrooms": 4,
+      "bathrooms": 3.0,
+      "location": "Mountain",
+      "year_built": 2003,
+      "condition": "Excellent",
+      "house_age": 22,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 29.42
+    },
+    "predicted_price": 90627.5,
+    "prediction_time": "2025-02-02T15:30:57"
+  },
+  {
+    "prediction_id": "9a646c06-b813-4ee8-890b-70d322a0e92d",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1870,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1981,
+      "condition": "Good",
+      "house_age": 44,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 224.55
+    },
+    "predicted_price": 419748.01,
+    "prediction_time": "2025-02-03T16:19:40"
+  },
+  {
+    "prediction_id": "f3daa2e5-5e02-4214-8480-a22ca8634c59",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1800,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1973,
+      "condition": "Good",
+      "house_age": 52,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 236.11
+    },
+    "predicted_price": 420701.4,
+    "prediction_time": "2025-02-04T17:08:23"
+  },
+  {
+    "prediction_id": "6f11e2e0-6a26-48a1-ada7-35edbc0e33bb",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2480,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Downtown",
+      "year_built": 1996,
+      "condition": "Good",
+      "house_age": 29,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 110.89
+    },
+    "predicted_price": 275107.06,
+    "prediction_time": "2025-02-05T17:57:06"
+  },
+  {
+    "prediction_id": "74b79007-24d3-4cbf-82d3-4aaa828b2d48",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1420,
+      "bedrooms": 2,
+      "bathrooms": 1.0,
+      "location": "Rural",
+      "year_built": 1953,
+      "condition": "Poor",
+      "house_age": 72,
+      "bed_bath_ratio": 2.0,
+      "price_per_sqft": 276.07
+    },
+    "predicted_price": 387944.1,
+    "prediction_time": "2025-02-06T18:45:49"
+  },
+  {
+    "prediction_id": "5f760996-2e31-4ea7-851f-6bbc7c01362d",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2030,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Urban",
+      "year_built": 1985,
+      "condition": "Good",
+      "house_age": 40,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 183.25
+    },
+    "predicted_price": 371424.57,
+    "prediction_time": "2025-02-07T19:34:32"
+  },
+  {
+    "prediction_id": "fd328288-de52-43cf-97e8-423193f2d27f",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1630,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Suburb",
+      "year_built": 1964,
+      "condition": "Fair",
+      "house_age": 61,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 266.2
+    },
+    "predicted_price": 434637.79,
+    "prediction_time": "2025-02-08T20:23:15"
+  },
+  {
+    "prediction_id": "e282ade1-e53e-469a-83a2-9fef22c6332e",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2210,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Downtown",
+      "year_built": 1986,
+      "condition": "Good",
+      "house_age": 39,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 160.15
+    },
+    "predicted_price": 353925.37,
+    "prediction_time": "2025-02-09T21:11:58"
+  },
+  {
+    "prediction_id": "a9faef1f-d9b8-45ec-a679-3f63ec7dad8d",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2120,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "location": "Urban",
+      "year_built": 1995,
+      "condition": "Good",
+      "house_age": 30,
+      "bed_bath_ratio": 1.2,
+      "price_per_sqft": 174.67
+    },
+    "predicted_price": 368293.81,
+    "prediction_time": "2025-02-10T22:00:41"
+  },
+  {
+    "prediction_id": "399e53b2-e7cb-4ea5-a845-aa6383db905c",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1690,
+      "bedrooms": 2,
+      "bathrooms": 2.0,
+      "location": "Suburb",
+      "year_built": 1969,
+      "condition": "Fair",
+      "house_age": 56,
+      "bed_bath_ratio": 1.0,
+      "price_per_sqft": 210.03
+    },
+    "predicted_price": 355566.95,
+    "prediction_time": "2025-02-11T22:49:24"
+  },
+  {
+    "prediction_id": "d672d9fc-81c8-4c2a-9433-6dd9f15c4534",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 2300,
+      "bedrooms": 3,
+      "bathrooms": 2.0,
+      "location": "Downtown",
+      "year_built": 1987,
+      "condition": "Good",
+      "house_age": 38,
+      "bed_bath_ratio": 1.5,
+      "price_per_sqft": 160.87
+    },
+    "predicted_price": 368239.63,
+    "prediction_time": "2025-02-13T23:38:07"
+  },
+  {
+    "prediction_id": "5e96f800-dc4e-461d-bc9a-4768bccdbc3a",
+    "model_name": "house_price_regressor",
+    "model_version": "v2.0",
+    "input_data": {
+      "sqft": 1670,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "location": "Rural",
+      "year_built": 1966,
+      "condition": "Fair",
+      "house_age": 59,
+      "bed_bath_ratio": 1.33,
+      "price_per_sqft": 255.87
+    },
+    "predicted_price": 421326.74,
+    "prediction_time": "2025-02-13T00:26:50"
   }
 ]

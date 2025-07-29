@@ -1,105 +1,114 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import subprocess
 import os
-import base64
-import socket
 from pathlib import Path
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-import threading
-import webbrowser
-import time
 
-def start_local_server(port=8000):
-    """Start a local HTTP server"""
-    handler = SimpleHTTPRequestHandler
-    httpd = HTTPServer(('localhost', port), handler)
-    thread = threading.Thread(target=httpd.serve_forever)
-    thread.daemon = True
-    thread.start()
-    return httpd
-
-def find_available_port():
-    """Find an available port"""
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind(('', 0))
-        return s.getsockname()[1]
+def generate_prediction_drift_report():
+    """Generate prediction drift report using evidently"""
+    try:
+        # Change to the correct directory and run the script
+        current_dir = Path(__file__).parent.parent
+        result = subprocess.run(
+            ["python", "evidently-report/generate-prediction-drift.py"],
+            cwd=current_dir,
+            capture_output=True,
+            text=True
+        )
+        return result.returncode == 0, result.stdout, result.stderr
+    except Exception as e:
+        return False, "", str(e)
 
 def app():
-    st.markdown("## 📈 Prediction Drift Analysis")
+    # Page header
     st.markdown("""
-    This page displays the detailed prediction drift analysis report.
-    The report compares the current model predictions against the reference dataset.
-    """)
-
-    # Get the absolute path to the reports directory
+    <div style="
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    ">
+        <h1 style="margin: 0; color: #1e293b; font-size: 1.8rem; font-weight: 700;">🎯 Prediction Drift Analysis</h1>
+        <p style="margin: 0.5rem 0 0 0; color: #64748b;">Track changes in model prediction patterns</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Get the absolute path to the report
     current_dir = Path(__file__).parent
-    reports_dir = current_dir.parent / "reports"
-    report_path = reports_dir / "prediction_target_drift_report.html"
+    report_path = current_dir.parent / "reports" / "prediction_target_drift_report.html"
     report_exists = report_path.exists()
 
-    if report_exists:
-        try:
-            # Start a local server to serve the report
-            port = find_available_port()
-            os.chdir(str(reports_dir))
-            httpd = start_local_server(port)
-            report_url = f"http://localhost:{port}/prediction_target_drift_report.html"
-            # Display the report with a clean layout
-            st.markdown("### Detailed Drift Analysis Report")
-            
-            # Add a download button for the report
+    # Control buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if st.button("🔄 Refresh", use_container_width=True):
+            st.rerun()
+    with col2:
+        if st.button("⚡ Generate Report", use_container_width=True):
+            with st.spinner("Generating prediction drift report..."):
+                success, stdout, stderr = generate_prediction_drift_report()
+                if success:
+                    st.success("✅ Report updated successfully!")
+                    st.rerun()
+                else:
+                    st.error(f"⚠️ Failed to generate report: {stderr}")
+                    if stdout:
+                        st.code(stdout)
+    with col3:
+        if report_exists:
             with open(report_path, 'rb') as f:
                 st.download_button(
-                    label="Download Full Report",
+                    label="📥 Download",
                     data=f,
                     file_name="prediction_drift_report.html",
-                    mime="text/html"
+                    mime="text/html",
+                    use_container_width=True
                 )
-            
-            # Create an iframe that points to the local server
-            iframe = f"""
-            <div style="height: 800px; overflow: auto; border: 1px solid #e6e9ef; border-radius: 0.5rem;">
-                <iframe src="{report_url}" 
-                        style="width: 100%; height: 100%; border: none;">
-                </iframe>
+
+    st.markdown("<div style='margin: 1.5rem 0;'></div>", unsafe_allow_html=True)
+    
+    if report_exists:
+        try:
+            # Status indicator
+            st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+                border: 1px solid #22c55e;
+                border-radius: 12px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            ">
+                <span style="color: #166534; font-weight: 600;">🟢 Report Available</span>
             </div>
-            """
-            components.html(iframe, height=800, scrolling=True)
-            
-            # Add a button to open in a new tab
-            st.markdown(f"""
-            <a href="{report_url}" target="_blank">
-                <button style="margin-top: 10px;">Open in New Tab</button>
-            </a>
             """, unsafe_allow_html=True)
             
+            # Read and display the HTML content
+            with open(report_path, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            # Display the full HTML report
+            components.html(html_content, height=800, scrolling=True)
+            
         except Exception as e:
-            st.error(f"Error loading report: {str(e)}")
-            if 'httpd' in locals():
-                httpd.shutdown()
-        finally:
-            if 'httpd' in locals():
-                httpd.shutdown()
+            st.error(f"⚠️ Error loading report: {str(e)}")
     else:
-        st.warning("No prediction drift report found. Please generate one using the command below.")
-        st.code("cd evidently-report && python generate-prediction-drift.py", language="bash")
-        
-        if st.button("Generate Prediction Drift Report"):
-            try:
-                import subprocess
-                with st.spinner("Generating report..."):
-                    result = subprocess.run(
-                        ["python", "evidently-report/generate-prediction-drift.py"],
-                        capture_output=True,
-                        text=True
-                    )
-                    if result.returncode == 0:
-                        st.success("Report generated successfully! Refreshing...")
-                        st.rerun()
-                    else:
-                        st.error(f"Error generating report: {result.stderr}")
-            except Exception as e:
-                st.error(f"Failed to generate report: {str(e)}")
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        ">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+            <h3 style="color: #92400e; margin: 0 0 0.5rem 0;">No Report Available</h3>
+            <p style="color: #a16207; margin: 0;">Click 'Generate Report' to analyze prediction drift patterns</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     app()

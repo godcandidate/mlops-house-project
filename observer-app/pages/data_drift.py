@@ -1,146 +1,114 @@
 import streamlit as st
 import streamlit.components.v1 as components
-import pandas as pd
-import numpy as np
-import plotly.express as px
-from datetime import datetime, timedelta
+import subprocess
 import os
+from pathlib import Path
 
-def generate_sample_drift_data():
-    """Generate sample data for demonstration"""
-    np.random.seed(42)
-    features = ['sqft', 'bedrooms', 'bathrooms', 'year_built']
-    
-    # Generate reference data (3 months ago)
-    ref_data = pd.DataFrame({
-        'feature': np.repeat(features, 100),
-        'value': np.concatenate([
-            np.random.normal(2000, 500, 100),  # sqft
-            np.random.normal(3, 1, 100).round(0),  # bedrooms
-            np.random.normal(2, 0.5, 100).round(1),  # bathrooms
-            np.random.normal(2000, 15, 100).round(0)  # year_built
-        ]),
-        'dataset': 'reference'
-    })
-    
-    # Generate current data (now)
-    curr_data = pd.DataFrame({
-        'feature': np.repeat(features, 100),
-        'value': np.concatenate([
-            np.random.normal(2100, 600, 100),  # sqft (drifted)
-            np.random.normal(3.2, 1.2, 100).round(0),  # bedrooms (slightly drifted)
-            np.random.normal(2, 0.5, 100).round(1),  # bathrooms (same)
-            np.random.normal(2010, 20, 100).round(0)  # year_built (drifted)
-        ]),
-        'dataset': 'current'
-    })
-    
-    return pd.concat([ref_data, curr_data])
-
-def plot_feature_distribution(feature_name, data):
-    """Create a distribution plot for a single feature"""
-    fig = px.histogram(
-        data[data['feature'] == feature_name],
-        x='value',
-        color='dataset',
-        barmode='overlay',
-        color_discrete_map={'reference': '#4f8bf9', 'current': '#ff7f0e'},
-        title=f'Distribution of {feature_name}',
-        labels={'value': feature_name, 'dataset': 'Dataset'}
-    )
-    fig.update_layout(
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        legend=dict(orientation='h', y=1.1, yanchor='bottom')
-    )
-    return fig
+def generate_data_drift_report():
+    """Generate data drift report using evidently"""
+    try:
+        # Change to the correct directory and run the script
+        current_dir = Path(__file__).parent.parent
+        result = subprocess.run(
+            ["python3", "evidently-report/generate-data-drift.py"],
+            cwd=current_dir,
+            capture_output=True,
+            text=True
+        )
+        return result.returncode == 0, result.stdout, result.stderr
+    except Exception as e:
+        return False, "", str(e)
 
 def app():
-    st.markdown("## 📊 Data Drift Analysis")
+    # Page header
     st.markdown("""
-    Monitor changes in your input data distributions over time to detect data drift.
-    Compare the reference (training) data against current production data.
-    """)
+    <div style="
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    ">
+        <h1 style="margin: 0; color: #1e293b; font-size: 1.8rem; font-weight: 700;">📈 Data Drift Analysis</h1>
+        <p style="margin: 0.5rem 0 0 0; color: #64748b;">Monitor feature distribution changes over time</p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    # Check if the report exists
-    report_path = "reports/data_drift_report.html"
-    report_exists = os.path.exists(report_path)
-    
-    # Tabs for different views
-    tab1, tab2 = st.tabs(["📊 Visual Analysis", "📝 Full Report"])
-    
-    with tab1:
-        st.markdown("### Feature Distribution Comparison")
-        
-        # Generate or load data
-        drift_data = generate_sample_drift_data()
-        features = drift_data['feature'].unique()
-        
-        # Create a grid of plots
-        cols = st.columns(2)
-        for idx, feature in enumerate(features):
-            with cols[idx % 2]:
-                fig = plot_feature_distribution(feature, drift_data)
-                st.plotly_chart(fig, use_container_width=True)
-        
-        # Drift summary
-        st.markdown("### 🚨 Drift Detection Summary")
-        drift_summary = pd.DataFrame({
-            'Feature': features,
-            'Drift Detected': ['Yes', 'No', 'No', 'Yes'],
-            'Drift Score': [0.87, 0.12, 0.08, 0.92],
-            'Impact': ['High', 'Low', 'Low', 'High']
-        })
-        
-        # Style the dataframe
-        def highlight_drift(val):
-            if val == 'Yes':
-                return 'background-color: #ffcccc'
-            elif val == 'High':
-                return 'color: #d62728; font-weight: bold'
-            return ''
-        
-        st.dataframe(
-            drift_summary.style.applymap(highlight_drift, 
-                                      subset=['Drift Detected', 'Impact'])
-                              .format({'Drift Score': '{:.2f}'}),
-            use_container_width=True,
-            hide_index=True
-        )
-        
-        st.info("""
-        **Legend:**  
-        - **Drift Score:** 0-0.3 (No Drift), 0.3-0.7 (Warning), 0.7-1 (Drift Detected)  
-        - **Impact:** Estimated impact on model performance
-        """)
-    
-    with tab2:
-        st.markdown("### Detailed Data Drift Report")
+    # Get the absolute path to the report
+    current_dir = Path(__file__).parent
+    report_path = current_dir.parent / "reports" / "data_drift_report.html"
+    report_exists = report_path.exists()
+
+    # Control buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if st.button("🔄 Refresh", use_container_width=True):
+            st.rerun()
+    with col2:
+        if st.button("⚡ Generate Report", use_container_width=True):
+            with st.spinner("Generating data drift report..."):
+                success, stdout, stderr = generate_data_drift_report()
+                if success:
+                    st.success("✅ Report updated successfully!")
+                    st.rerun()
+                else:
+                    st.error(f"⚠️ Failed to generate report: {stderr}")
+                    if stdout:
+                        st.code(stdout)
+    with col3:
         if report_exists:
-            with open(report_path, 'r') as f:
-                components.html(f.read(), height=1000, scrolling=True)
-        else:
-            st.warning("No data drift report found. Please generate one using the command below.")
-            st.code("python evidently-report/generate-data-drift.py", language="bash")
+            with open(report_path, 'rb') as f:
+                st.download_button(
+                    label="📥 Download",
+                    data=f,
+                    file_name="data_drift_report.html",
+                    mime="text/html",
+                    use_container_width=True
+                )
+
+    st.markdown("<div style='margin: 1.5rem 0;'></div>", unsafe_allow_html=True)
     
-    # Add a section to generate new report
-    with st.expander("🔧 Generate New Report", expanded=False):
-        st.markdown("### Generate New Data Drift Report")
-        col1, col2 = st.columns([3, 1])
-        with col1:
+    if report_exists:
+        try:
+            # Status indicator
             st.markdown("""
-            Click the button below to generate a new data drift report. 
-            This will compare the latest production data against the reference dataset.
-            """)
-        with col2:
-            if st.button("🔄 Generate Report", type="primary"):
-                with st.spinner("Generating report... This may take a minute."):
-                    try:
-                        # Here you would call your data drift generation script
-                        # For now, we'll just create a dummy file
-                        with open(report_path, 'w') as f:
-                            f.write("<html><body><h1>Data Drift Report</h1><p>This is a placeholder for the data drift report.</p></body></html>")
-                        st.success("Report generated successfully!")
-                        st.experimental_rerun()  # Refresh the page to show the new report
-                    except Exception as e:
-                        st.error(f"Error generating report: {str(e)}")
+            <div style="
+                background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+                border: 1px solid #22c55e;
+                border-radius: 12px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            ">
+                <span style="color: #166534; font-weight: 600;">🟢 Report Available</span>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Read and display the HTML content
+            with open(report_path, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            # Display the full HTML report
+            components.html(html_content, height=800, scrolling=True)
+            
+        except Exception as e:
+            st.error(f"⚠️ Error loading report: {str(e)}")
+    else:
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        ">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📈</div>
+            <h3 style="color: #92400e; margin: 0 0 0.5rem 0;">No Report Available</h3>
+            <p style="color: #a16207; margin: 0;">Click 'Generate Report' to analyze data drift patterns</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    app()

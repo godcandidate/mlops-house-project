@@ -1,37 +1,114 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px
+import streamlit.components.v1 as components
+import subprocess
 import os
+from pathlib import Path
+
+def generate_model_performance_report():
+    """Generate model performance report using evidently"""
+    try:
+        # Change to the correct directory and run the script
+        current_dir = Path(__file__).parent.parent
+        result = subprocess.run(
+            ["python", "evidently-report/generate-model-performance.py"],
+            cwd=current_dir,
+            capture_output=True,
+            text=True
+        )
+        return result.returncode == 0, result.stdout, result.stderr
+    except Exception as e:
+        return False, "", str(e)
 
 def app():
-    st.title("📊 Model Performance")
+    # Page header
+    st.markdown("""
+    <div style="
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    ">
+        <h1 style="margin: 0; color: #1e293b; font-size: 1.8rem; font-weight: 700;">⚡ Model Performance Analysis</h1>
+        <p style="margin: 0.5rem 0 0 0; color: #64748b;">Evaluate model accuracy and regression metrics</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Get the absolute path to the report
+    current_dir = Path(__file__).parent
+    report_path = current_dir.parent / "reports" / "model_performance_report.html"
+    report_exists = report_path.exists()
 
-    try:
-        import json
-        
-        # Read inference logs
-        with open("logs/inference.json", 'r') as f:
-            inf_data = json.load(f)
-            inf_df = pd.json_normalize(inf_data)
+    # Control buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if st.button("🔄 Refresh", use_container_width=True):
+            st.rerun()
+    with col2:
+        if st.button("⚡ Generate Report", use_container_width=True):
+            with st.spinner("Generating model performance report..."):
+                success, stdout, stderr = generate_model_performance_report()
+                if success:
+                    st.success("✅ Report updated successfully!")
+                    st.rerun()
+                else:
+                    st.error(f"⚠️ Failed to generate report: {stderr}")
+                    if stdout:
+                        st.code(stdout)
+    with col3:
+        if report_exists:
+            with open(report_path, 'rb') as f:
+                st.download_button(
+                    label="📥 Download",
+                    data=f,
+                    file_name="model_performance_report.html",
+                    mime="text/html",
+                    use_container_width=True
+                )
+
+    st.markdown("<div style='margin: 1.5rem 0;'></div>", unsafe_allow_html=True)
+    
+    if report_exists:
+        try:
+            # Status indicator
+            st.markdown("""
+            <div style="
+                background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+                border: 1px solid #22c55e;
+                border-radius: 12px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            ">
+                <span style="color: #166534; font-weight: 600;">🟢 Report Available</span>
+            </div>
+            """, unsafe_allow_html=True)
             
-        # Read feedback logs if they exist
-        fed_df = pd.DataFrame()
-        if os.path.exists("logs/feedback.json"):
-            with open("logs/feedback.json", 'r') as f:
-                fed_data = json.load(f)
-                fed_df = pd.json_normalize(fed_data)
-        merged = pd.merge(inf_df, fed_df, on="prediction_id", how="inner")
-        merged["error"] = abs(merged["predicted_price"] - merged["expected_price"])
+            # Read and display the HTML content
+            with open(report_path, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            # Display the full HTML report
+            components.html(html_content, height=800, scrolling=True)
+            
+        except Exception as e:
+            st.error(f"⚠️ Error loading report: {str(e)}")
+    else:
+        st.markdown("""
+        <div style="
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        ">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+            <h3 style="color: #92400e; margin: 0 0 0.5rem 0;">No Report Available</h3>
+            <p style="color: #a16207; margin: 0;">Click 'Generate Report' to analyze model performance metrics</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-        st.subheader("📈 Acceptance Rate")
-        st.bar_chart(fed_df["user_feedback"].value_counts())
-
-        st.subheader("📉 Prediction Errors")
-        fig = px.histogram(merged, x="error", nbins=20, title="Prediction Error Distribution")
-        st.plotly_chart(fig)
-
-        st.subheader("🔢 Avg Error")
-        st.metric("Average Error", f"${merged['error'].mean():,.2f}")
-
-    except Exception as e:
-        st.warning(f"Error loading performance data: {str(e)}")
+if __name__ == "__main__":
+    app()

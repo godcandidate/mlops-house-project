@@ -54,7 +54,7 @@ def main():
     )
     
     # Save HTML report
-    report.save_html("reports/data_drift_report.html")
+    report.save_html("reports/data_drift_report-1.html")
     print("✅ Data drift report generated at reports/data_drift_report.html")
     
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+services:
+  observer-app:
+    build: .
+    ports:
+      - "8500:8501"
