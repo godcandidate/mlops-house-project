@@ -50,18 +50,22 @@ st.markdown("""
         background: #f3f4f6 !important;
         border: 1px solid #e5e7eb !important;
         border-radius: 16px !important;
-        padding: 16px 20px !important;
-        margin: 4px 0 !important;
+        padding: 18px 32px !important;
+        margin: 6px 0 !important;
         transition: all 0.3s ease !important;
         cursor: pointer !important;
         font-weight: 500 !important;
         color: #6b7280 !important;
         width: 100% !important;
+        min-width: 220px !important;
         box-sizing: border-box !important;
         display: flex !important;
         align-items: center !important;
+        justify-content: flex-start !important;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
         position: relative !important;
+        text-align: left !important;
+        font-size: 0.95rem !important;
     }
     
     .stRadio > div > label:hover {
@@ -101,18 +105,20 @@ st.markdown("""
     /* Blue left border when active */
     .stRadio > div > label[data-checked="true"]::before,
     .stRadio > div > label[aria-checked="true"]::before,
-    .stRadio input[type="radio"]:checked + label::before {
+    .stRadio input[type="radio"]:checked + label::before,
+    .stRadio > div > label:has(input:checked)::before {
         background: #3b82f6 !important;
-        height: 32px;
+        height: 32px !important;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3) !important;
     }
     
     /* Right status dot - gray by default */
     .stRadio > div > label::after {
         content: '';
         position: absolute;
-        right: 16px;
-        width: 8px;
-        height: 8px;
+        right: 20px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: #d1d5db;
         transition: all 0.3s ease;
@@ -121,8 +127,11 @@ st.markdown("""
     /* Blue dot when active */
     .stRadio > div > label[data-checked="true"]::after,
     .stRadio > div > label[aria-checked="true"]::after,
-    .stRadio input[type="radio"]:checked + label::after {
+    .stRadio input[type="radio"]:checked + label::after,
+    .stRadio > div > label:has(input:checked)::after {
         background: #3b82f6 !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+        transform: scale(1.1) !important;
     }
     
     /* Clean button styling for all pages */
