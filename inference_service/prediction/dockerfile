@@ -1,0 +1,18 @@
+# Use the AWS Lambda Python 3.11 base image directly
+FROM public.ecr.aws/lambda/python:3.11
+
+# (Optional) Upgrade pip for potentially better handling of dependencies
+RUN pip install --upgrade pip
+
+# Copy requirements.txt first to leverage Docker layer caching
+COPY requirements.txt ${LAMBDA_TASK_ROOT}
+
+# Install dependencies directly into the Lambda task root
+# Using --no-cache-dir to keep the layer smaller
+RUN pip install  -r requirements.txt
+
+# Copy your function code
+COPY lambda_function.py ${LAMBDA_TASK_ROOT}
+
+# Set the CMD to your handler (module.function_name)
+CMD ["lambda_function.lambda_handler"]
