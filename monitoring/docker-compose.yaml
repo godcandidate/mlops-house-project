@@ -1,0 +1,9 @@
+services:
+  observer-app:
+    image: ml-monitor-app
+    container_name: monitor-app
+    ports:
+      - "8500:8501"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
