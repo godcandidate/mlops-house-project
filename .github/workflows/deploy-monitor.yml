@@ -2,7 +2,7 @@ name: Deploy Monitor Package to ECR
 
 on:
   push:
-    branches: [application-ready]
+    branches: [test]
 
 jobs:
   deploy:

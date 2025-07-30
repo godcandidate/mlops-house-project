@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from inference import predict_price, batch_predict
-from schemas import HousePredictionRequest, PredictionResponse
+from inference import predict_price, batch_predict, save_feedback
+from schemas import HousePredictionRequest, PredictionResponse, FeedbackRequest
 
 # Initialize FastAPI app with metadata
 app = FastAPI(
@@ -41,6 +41,11 @@ async def health_check():
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(request: HousePredictionRequest):
     return predict_price(request)
+
+# Feedback endpoint
+@app.post("/feedback")
+async def feedback(request: FeedbackRequest):
+    return save_feedback(request)
 
 # Batch prediction endpoint
 @app.post("/batch-predict", response_model=list)
