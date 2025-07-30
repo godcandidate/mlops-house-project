@@ -10,7 +10,7 @@ def generate_model_performance_report():
         # Change to the correct directory and run the script
         current_dir = Path(__file__).parent.parent
         result = subprocess.run(
-            ["python", "evidently-report/generate-model-performance.py"],
+            ["python3", "evidently-report/generate-model-performance.py"],
             cwd=current_dir,
             capture_output=True,
             text=True

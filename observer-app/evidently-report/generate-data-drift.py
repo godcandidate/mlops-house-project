@@ -2,10 +2,11 @@ import pandas as pd
 import json
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset, DataQualityPreset
+import os
 
 def main():
     # Load the training data
-    reference_data = pd.read_csv("data/trained_data.csv")
+    reference_data = pd.read_csv("data/trained_data-gradient.csv")
     
     # Load and process inference logs
     with open("logs/inference.json", 'r') as f:
@@ -52,9 +53,11 @@ def main():
         reference_data=reference_data,
         current_data=current_data
     )
-    
+    # Ensure the 'reports' directory exists
+    os.makedirs("reports", exist_ok=True)
+
     # Save HTML report
-    report.save_html("reports/data_drift_report-1.html")
+    report.save_html("reports/data_drift_report.html")
     print("✅ Data drift report generated at reports/data_drift_report.html")
     
 if __name__ == "__main__":

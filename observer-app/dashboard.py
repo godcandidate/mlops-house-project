@@ -1,5 +1,5 @@
 import streamlit as st
-from pages import overview, data_drift, prediction_drift, model_performance, ab_testing
+from pages import overview, data_drift, model_performance, ab_testing
 import os
 
 # Disable automatic page navigation by hiding the default Streamlit navigation
