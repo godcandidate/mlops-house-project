@@ -3,6 +3,7 @@
 End-to-end MLOps pipeline for house price prediction with monitoring, inference, and automated workflows.
 
 <p align="center"> <img src="infra.png" alt="MLOP AWS Architecture" width="800"> </p>
+
 ## 🏗️ Architecture
 
 - **ML Pipeline**: Data processing → Feature engineering → Model training
@@ -23,58 +24,7 @@ mlops-house-project/
 └── .github/workflows/  # CI/CD automation
 ```
 
-## 🚀 Quick Start
 
-### 1. Setup Environment
-
-```bash
-git clone <repo-url>
-cd mlops-house-project
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-pip install -r requirements.txt
-```
-
-### 2. Start MLflow Tracking
-
-```bash
-cd deployment/mlflow
-docker compose up -d
-# Access MLflow UI at http://localhost:5555
-```
-
-### 3. Run ML Pipeline
-
-```bash
-# Data processing
-python src/run_data_pipeline.py
-
-# Feature engineering
-python src/run_feature_pipeline.py
-
-# Model training
-python src/run_model_pipeline.py
-```
-
-### 4. Start Monitoring Dashboard
-
-```bash
-cd monitoring
-docker compose up -d
-# Access dashboard at http://localhost:8501
-```
-
-### 5. Deploy Inference Service
-
-```bash
-# Local API testing
-cd src/api
-uvicorn main:app --reload
-
-# Lambda deployment
-cd inference_service/prediction-image
-docker build -t house-price-prediction .
-```
 
 ## 🔧 Key Components
 
